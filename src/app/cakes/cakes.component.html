@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3 mt-3">
+      <label for="" class="form-Control">Ingredients:</label>
+      <select class="form-control" (change)="onFilterIngredients($event)">
+        <option value="">--</option>
+        <option [value]="item" *ngFor="let item of ingredients">
+          {{ item }}
+        </option>
+      </select>
+      <!-----filtracija-->
+    </div>
+  </div>
+  <div class="row mt-2 flex-container " >
+    <div class="card col-3 mt-4" *ngFor="let cake of cakes">
+      <div class="card-details">
+        <img
+          class="card-img-top"
+          src="http://localhost:3000/image/cakes/{{ cake._id }}.jpg"
+          width="100%"
+          alt=""
+          
+        />
+
+        <p class="text-title">{{ cake.name }}</p>
+        <p class="text-body">{{ cake.ingredients }}</p>
+      </div>
+      <button class="card-button" [routerLink]="['/cakes', cake._id]">
+        More info
+      </button>
+    </div>
+
+    <!--
+    <div class="col-4 card mt-3 bg-light" *ngFor="let cake of cakes">
+      <img
+        class="card-img-top"
+        src="http://localhost:3000/image/cakes/{{ cake._id }}.jpg"
+        width="100%"
+        alt=""
+        [routerLink]="['/cakes', cake._id]"
+      />
+
+      <div>
+        <h3 class="card-tittle">{{ cake.name }}</h3>
+        <p>{{ cake.ingredients }}</p>
+      </div>
+    </div>
+    -->
+  </div>
+</div>
